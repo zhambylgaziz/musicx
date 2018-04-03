@@ -1,0 +1,96 @@
+body{
+	margin:0;
+}
+#logo{
+	padding: 5px 5px;
+	width: 7%;
+	height: auto;
+}
+.nav{
+	position: sticky;
+	top: 0;
+	overflow: hidden;
+	z-index:1;
+}
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: LightSlateGray;
+}
+li{
+	float: left;
+}
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	
+}
+li a:hover {
+	text-decoration: none;
+	background-color: LightSteelBlue;
+	color: DarkSlateGrey ;
+}
+li a:active {
+	text-decoration: none;
+
+}
+a {
+	text-decoration: none;
+}
+
+.active{
+	background-color: LightSteelBlue;
+	color: DimGray;
+}	
+.inactive{
+	display: none;
+}	
+
+.container{
+	z-index: 2;
+	margin-bottom: 60px;
+}
+.footer p {
+	color: white;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.footer{
+	height: 45px;
+	background-color: LightSlateGray;
+	width: 100%;
+	position:fixed;
+    bottom:0;
+
+}
+#slider{
+	width: 100%;
+	height: auto;
+}
+ p{
+	text-align: justify;
+ }
+
+.gotop{
+	padding-right: 0px;
+	position: absolute;
+
+}
+
+.bt{
+	padding: 14px 16px;
+	border: none;
+	background-color: LightSlateGray;
+	color: white;
+}
+
+  
+  
+
+
+  
