@@ -33,39 +33,50 @@
 		m.className = "inactive";
 	</script>
 	<div class="container">
-        <form action="register.php"  method="post">
-			<input type="text" name ="firstname" id="first" class="form-control" placeholder="First name" style="margin-top: 5px;"  required>
+        <form action = "register.php" method = "post">
+			<input type="text" name = "first" id="first" class="form-control" placeholder="First name" style="margin-top: 5px;" required>
 			<input type="text" name = "last" id="last" class="form-control" placeholder="Last name" style="margin-top: 5px;" required>
-			<input type="email" name = "mail" id="mail" class="form-control" placeholder="E-mail" style="margin-top: 5px;"  required><br>
+			<input type="email" name = "mail" id="mail" class="form-control" placeholder="E-mail" style="margin-top: 5px;" required><br>
 			<p></p>
-			<input type="text" name = "login" id="user" class="form-control" placeholder="Username"  required>
-            <input type="password" name = "passwd" id="pass" class="form-control" placeholder="Password" style="margin-top: 5px;"  required>
-            <input type="password" name = "passwd2" id="confirm" class="form-control" placeholder="Confirm Password" style="margin-top: 5px;" required><br>
-            <button type="submit" name = "reg" class="btn btn-lg btn-primary btn-block btn-signin" onclick="check()" ><span class="glyphicon glyphicon-ok" ></span> Sign up</button>
+			<input type="text" name = "user" id="user" class="form-control" placeholder="Username" required>
+            <input type="password" name = "pass" id="pass" class="form-control" placeholder="Password" style="margin-top: 5px;" required>
+            <input type="password" name = "confirm" id="confirm" class="form-control" placeholder="Confirm Password" style="margin-top: 5px;" required><br>
+            <button type="submit" name = "register" class="btn btn-lg btn-primary btn-block btn-signin"  onclick="check()"><span class="glyphicon glyphicon-ok"></span> Sign up</button>
 		</form>
-		<a href="login.php" class="forgot-password">Already have an account?</a>
+		<a href="login.html" class="forgot-password">Already have an account?</a>
 		<?php
-			$conn = mysqli_connect("localhost", "root", "", "music");
-			if($_POST["reg"]){
-				$firstname = $_POST['firstname'];
-				$lastname = $_POST['last'];
+			if(isset($_POST['register']))
+			{
+				$first = $_POST['first'];
+				$last = $_POST['last'];
 				$mail = $_POST['mail'];
-				$login = $_POST['login'];
-				$password1 = $_POST['passwd'];
-				$password2 = $_POST['passwd2'];
-
-				if($password1 == $password2){
-					$pass = md5($password);
-					$query = "INSERT INTO login (username, passwd) VALUES ('$login', '$pass')";
-					$result = mysqli_query($query);
-					if($result){
-						echo 'Success';
-					}else{
-						echo 'Fail';
+				$user = $_POST['user'];
+				$pass = $_POST['pass'];
+				$confirm = $_POST['confirm'];
+				if($pass = $confirm){
+					$password = md5($pass);
+					$conn = mysql_connect("localhost", "root", "");
+					if(!$conn)
+					{
+						 die('Could not connect: ' . mysql_error());
 					}
-					// $query2 = mysql_query("INSERT INTO login VALUES ('', '$login', '$pass')") or die(mysql_error());
+					mysql_select_db("music") or die(mysql_error());
+				//	$result = mysqli_query("SELECT * FROM login WHERE username = '$user' AND password = '$password';");
+					if(mysqli_num_rows($result) == 0)
+						{
+							mysql_query("INSERT INTO reg (firstname, lastname, email) VALUES('$first', '$last', '$mail');");
+							mysql_query("INSERT INTO login (username, passwd) VALUES('$user', '$password');"); 
+						}else
+						{
+							echo 'Username exists';
+						}
+
+					mysql_close($conn);
 				}
+				
 			}
+		
+		
 		?>
     </div>
 	<?php
