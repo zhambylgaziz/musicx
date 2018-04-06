@@ -9,7 +9,7 @@
   
  	</script>
  	<?php
-		$dir = "uploads/";
+		$dir = "slider/";
 		$array = array();
 		if (is_dir($dir))
 		{
@@ -116,16 +116,16 @@
 			</div>
 			<div class="col-sm-8">
 				<img name = "slide" id = "slider" name = "slide">
-				<button type="button" class="btn right" onclick="next()" style="position:absolute; top:30%; left: 100%;">
+				<button type="button" class="btn right" onclick="next()" style="position:absolute; top:30%; left: 95%;">
 					<span class="glyphicon glyphicon-chevron-right" ></span>
 				</button>
-				<button type="button" class="btn left" onclick="prev()" style="position:absolute; top:30%; left: 0%; transform: translate(0, -100%);">
+				<button type="button" class="btn left" onclick="prev()" style="position:absolute; top:30%; left: 0%;">
 					<span class="glyphicon glyphicon-chevron-left"></span>
 				</button>
-				<button type="button" class="btn stop" onclick="sliderStop()" style="left: 50%; margin-left: 10px; position: absolute;">
+				<button type="button" class="btn stop" onclick="sliderStop()" style="left: 50%; position: absolute; transform: translate(0%, -100%);">
 					<span class="glyphicon glyphicon-pause"></span>
 				</button>
-				<button type="button" class="btn play" onclick="sliderAuto()" style="left: 50%; position: absolute;">
+				<button type="button" class="btn play" onclick="sliderAuto()" style="left: 44%; position: absolute;  transform: translate(0%, -100%);">
 					<span class="glyphicon glyphicon-play"></span>
 				</button>
 
@@ -136,7 +136,7 @@
 						<input type="submit" name="upload" value="Upload image" id ="upload">
 					</form>
 					<?php
-						$location = "uploads/";
+						$location = "slider/";
 						$max_size = 2097152;
 
 						// $image_info = getimagesize($_FILES['img']['tmp_name']);

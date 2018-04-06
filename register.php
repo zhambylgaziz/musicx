@@ -55,23 +55,23 @@
 				$confirm = $_POST['confirm'];
 				if($pass = $confirm){
 					$password = md5($pass);
-					$conn = mysql_connect("localhost", "root", "");
-					if(!$conn)
+					$con = mysqli_connect("localhost", "root", "", "music");
+					// Check connection
+					if (mysqli_connect_errno())
 					{
-						 die('Could not connect: ' . mysql_error());
+						echo "Failed to connect to MySQL: " . mysqli_connect_error();
 					}
-					mysql_select_db("music") or die(mysql_error());
-				//	$result = mysqli_query("SELECT * FROM login WHERE username = '$user' AND password = '$password';");
+					$result = mysqli_query($con, "SELECT * FROM login WHERE username = '$user';");
 					if(mysqli_num_rows($result) == 0)
 						{
-							mysql_query("INSERT INTO reg (firstname, lastname, email) VALUES('$first', '$last', '$mail');");
-							mysql_query("INSERT INTO login (username, passwd) VALUES('$user', '$password');"); 
+							mysqli_query($con, "INSERT INTO reg (firstname, lastname, email) VALUES('$first', '$last', '$mail');");
+							mysqli_query($con, "INSERT INTO login (username, passwd) VALUES('$user', '$password');"); 
 						}else
 						{
 							echo 'Username exists';
 						}
 
-					mysql_close($conn);
+					mysqli_close($con);
 				}
 				
 			}
