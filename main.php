@@ -100,10 +100,12 @@
 						$img_extension = strtolower(substr($name, strpos($name, '.') + 1));
 						
 						echo $audio_name = $_FILES['audio']['name'] . '</br>';
-						echo $audio_size = $_FILES['audio']['size'] . '</br>';
-						echo $audio_type = $_FILES['audio']['type'] . '</br>';
-						echo $audio_tmp_name = $_FILES['audio']['tmp_name'] . '</br>';
-						echo $audio_extension = strtolower(substr($audio_name, strpos($audio_name, '.') + 1)) . '</br>';
+						echo $path = $mus.basename($_FILES['audio']['name']);
+						//echo $audio_size = $_FILES['audio']['size'] . '</br>';
+						//echo $audio_type = $_FILES['audio']['type'] . '</br>';
+						echo $audio_tmp_name = $_FILES['audio']['tmp_name'] .'</br>';
+						//echo $audio_tmp_name = $_FILES['audio']['tmp_name'] . '</br>';
+						//echo $audio_extension = strtolower(substr($audio_name, strpos($audio_name, '.') + 1)) . '</br>';
 						$t = 0;
 						$k = 0;
 						if(!empty($name))
@@ -130,23 +132,26 @@
 						}
 						if(!empty($audio_name))
 						{
-							if($audio_extension == 'mp3' && $audio_type == 'audio/mp3')
-							{
-								if($audio_size < $audio_max_size)
-								{
-									if(move_uploaded_file($audio_tmp_name, $mus.$audio_name))
+							//if($audio_extension == 'mp3' && ($audio_type == 'audio/mp3' || $audio_type == "audio/mpeg"))
+							//{
+							//	if($audio_size < $audio_max_size)
+							//	{
+								echo $_FILES['audio']['error'];
+								echo 'audio tmp ' . $_FILES['audio']['tmp_name'] .'</br>';
+								echo 'path ' . $path . '</br>';
+									if(move_uploaded_file($audio_tmp_name, $path))
 										{
 											$t = 1;
 											echo 'Song uploaded</br>';
 										}
 									
-								}else{
-									echo 'File size is too big.</br>';
-									}
+								//}else{
+									//echo 'File size is too big.</br>';
+								//	}
 								
-							}else{	
-									echo 'Upload only audio (mp3).</br>';
-								}
+							//}else{	
+								//	echo 'Upload only audio (mp3).</br>';
+							//	}
 						}else{
 							echo 'Choose a file</br>';
 						}
