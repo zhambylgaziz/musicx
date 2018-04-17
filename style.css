@@ -88,6 +88,15 @@ a {
 	background-color: LightSlateGray;
 	color: white;
 }
+.name{
+	font-family: 'Bitter', serif;
+}
+.time{
+	font-family: 'Rajdhani' sans-serif;
+}
+.comment{
+	font-family: 'Berkshire Swash', cursive;
+}
 
   
   
