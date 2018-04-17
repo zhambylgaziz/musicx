@@ -47,7 +47,7 @@
 					
 			</div>
 			<div class="col-sm-3">
-				<h2 style="font-family: 'Black Han Sans', sans-serif; "> Contact </h2>
+				<h2 style="font-family: 'Black Han Sans', sans-serif; "> Contact </h2></br>
 				<p style="font-family: 'Titillium Web', sans-serif;"><span class="glyphicon glyphicon-map-marker"></span> Kazakhstan, Almaty</p>
 				<p style="font-family: 'Titillium Web', sans-serif;"><span class="glyphicon glyphicon-earphone"></span> 8 (700) 088 1551</p>
 				<p style="font-family: 'Titillium Web', sans-serif;"><span class="glyphicon glyphicon-envelope"></span> zhambylgaziz@gmail.com</p>
