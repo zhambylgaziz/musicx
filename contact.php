@@ -75,7 +75,7 @@
 					{
 						echo ' 
 							<div class="col-sm-5">
-								<form action = "contact.php" method = "post">
+								<form action = "comment.php" method = "post">
 									<h3><input type="text" placeholder="Name" name="name" class="form-control" style="width: 80%;" required></h3>
 									<p><textarea name="comment" id="comment" rows="6"  style="width: 80%;" required></textarea></p>
 									<input type="submit" name="add" value = "Comment">
@@ -83,14 +83,7 @@
 							</div>
 						';
 					}
-					if(isset($_POST['add'])){
-						$name = $_POST['name'];
-						$comment = $_POST['comment'];
-						$add = "INSERT INTO comment(name, time, comment) VALUES ('$name', CURRENT_TIMESTAMP, '$comment');";
-						if(mysqli_query($con, $add)){
-							echo '<script>window.alert("Thank you for comment")</script>';
-						}
-					}
+					
 				?>
 			</div>
 		</div>

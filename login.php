@@ -23,11 +23,9 @@
 <body>
 	<?php
 		include 'header.php';
-		if(isset($_POST["quit"]))
-			if(isset($_COOKIE['login']))
-			{	
-				setcookie('login', $_POST['user'], 1);
-			}
+		if(isset($_COOKIE['login'])){
+			header('Location: main.php');
+		}
 	?>		
 	<script type="text/javascript">
 		var d = document.getElementById("login");
@@ -36,7 +34,7 @@
 		m.className = "inactive";
 	</script>
 	<div class="container">
-        <form action='main.php' method='post'>
+        <form action='signin.php' method='post'>
 			<input type="text" id="user" class="form-control" placeholder="Username" name='user' >
             <input type="password" id="pass" class="form-control" placeholder="Password" style="margin-top: 5px;" name='pass'>
             <div id="remember" class="checkbox">
@@ -44,12 +42,8 @@
 					<input type="checkbox" value="remember-me"> Remember me
 				</label>
             </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name='enter' onclick="check()"><span class="glyphicon glyphicon-ok"></span> Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name='enter' ><span class="glyphicon glyphicon-ok"></span> Sign in</button> <!--onclick="check()"-->
 		</form>
-		<?php
-			$connect = "";
-
-		?>
         <a href="#" class="forgot-password">Forgot the password?</a><br>
     </div>
 	<?php

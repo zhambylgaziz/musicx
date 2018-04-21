@@ -65,7 +65,8 @@
 					if(mysqli_num_rows($result) == 0)
 						{
 							mysqli_query($con, "INSERT INTO reg (firstname, lastname, email) VALUES('$first', '$last', '$mail');");
-							mysqli_query($con, "INSERT INTO login (username, passwd) VALUES('$user', '$password');"); 
+							mysqli_query($con, "INSERT INTO login (username, passwd) VALUES('$user', '$password');");
+							header("Location: login.php");
 						}else
 						{
 							echo 'Username exists';
