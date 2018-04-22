@@ -13,13 +13,13 @@
 						$tmp_name = $_FILES['myfile']['tmp_name'];
 						$img_extension = strtolower(substr($name, strpos($name, '.') + 1));
 						
-						// echo $audio_name = $_FILES['audio']['name'] . '</br>';
-						// echo $path = $mus.basename($_FILES['audio']['name']);
-						// //echo $audio_size = $_FILES['audio']['size'] . '</br>';
-						// //echo $audio_type = $_FILES['audio']['type'] . '</br>';
-						// echo $audio_tmp_name = $_FILES['audio']['tmp_name'] .'</br>';
-						//echo $audio_tmp_name = $_FILES['audio']['tmp_name'] . '</br>';
-						//echo $audio_extension = strtolower(substr($audio_name, strpos($audio_name, '.') + 1)) . '</br>';
+						$audio_name = $_FILES['audio']['name'];
+						$path = $mus.basename($_FILES['audio']['name']);
+						$audio_size = $_FILES['audio']['size'];
+						$audio_type = $_FILES['audio']['type'];
+						$audio_tmp_name = $_FILES['audio']['tmp_name'];
+						$audio_extension = strtolower(substr($audio_name, strpos($audio_name, '.') + 1));
+
 						$t = 0;
 						$k = 0;
 						if(!empty($name))
@@ -30,55 +30,51 @@
 								{
 									if(move_uploaded_file($tmp_name, $dir.$name))
 										{
-											echo 'Image uploaded';
 											$k = 1;
 										}
 									
 								}else{
-									echo 'File size is too big.</br>';
+									echo '<script> alert("File size is too big.");</script>';
 									}
 								
 							}else{	
-									echo 'Upload only images (jpg, jpeg, png).';
+									echo '<script> alert("Upload only images (jpg, jpeg, png).");</script>';
 								}
+						}else{
+							echo '<script> alert("Choose a file</br>");</script>';
+						}
+						if(!empty($audio_name))
+						{
+							// if($audio_extension == 'mp3' && $audio_type == 'audio/mp3')
+							// {
+								if($audio_size < $audio_max_size)
+								{
+									if(move_uploaded_file($audio_tmp_name, $path))
+										{
+											$t = 1;
+										}
+									
+								}else{
+									echo '<script> alert("File size is too big.");</script>';
+									}
+								
+							// }else{	
+							// 		echo 'Upload only audio (mp3).</br>';
+							// 	}
 						}else{
 							echo 'Choose a file</br>';
 						}
-						// if(!empty($audio_name))
-						// {
-						// 	//if($audio_extension == 'mp3' && ($audio_type == 'audio/mp3' || $audio_type == "audio/mpeg"))
-						// 	//{
-						// 	//	if($audio_size < $audio_max_size)
-						// 	//	{
-						// 		echo $_FILES['audio']['error'];
-						// 		echo 'audio tmp ' . $_FILES['audio']['tmp_name'] .'</br>';
-						// 		echo 'path ' . $path . '</br>';
-						// 			if(move_uploaded_file($audio_tmp_name, $path))
-						// 				{
-						// 					$t = 1;
-						// 					echo 'Song uploaded</br>';
-						// 				}
-									
-						// 		//}else{
-						// 			//echo 'File size is too big.</br>';
-						// 		//	}
-								
-						// 	//}else{	
-						// 		//	echo 'Upload only audio (mp3).</br>';
-						// 	//	}
-						// }else{
-						// 	echo 'Choose a file</br>';
-						// }
 
-						if($k == 1){ //&& $t == 1){
+						if($k == 1 && $t == 1){
 							$con = mysqli_connect("localhost", "root", "", "music");
 							if (mysqli_connect_errno())
 								{
 									echo "Failed to connect to MySQL: " . mysqli_connect_error();
 								}
-							//mysqli_query($con, "INSERT INTO uploads (name, title, img, audio) VALUES('$actor', '$title', '$name', '$audio_name');");
-							mysqli_query($con, "INSERT INTO uploads (name, title, img, audio) VALUES('$actor', '$title', '$name', 'Bebe Rexha - F.F.F. (feat. G-Eazy).mp3');");
-							echo 'Success';
+							mysqli_query($con, "INSERT INTO uploads (name, title, img, audio) VALUES('$actor', '$title', '$name', '$audio_name');");
+							echo '<script> alert("Item added.");</script>';
+						}else{
+
 						}
 					}
 					header("Location: main.php");
