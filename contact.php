@@ -61,16 +61,35 @@
 					$con = mysqli_connect("localhost", "root", "", "music");
 					$query = "SELECT * FROM comment";
 					$result = mysqli_query($con, $query);
-					while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-						echo '
-							<div class="col-sm-5">
-								<h4 class = "namee">' . $row['name'] . '</h4>
-								<h6 class = "time">' . $row['time'] . '</h6>
-								<p class = "comment">' . $row['comment'] . ' </p>
+					if(isset($_COOKIE['login']) && $_COOKIE['login'] == 'admin') 
+					{
+						while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+							echo '
+								<div class="col-sm-5">
+									<h4 class = "namee">' . $row['name'] . '</h4>
+									<h6 class = "time">' . $row['time'] . ' <a href = "delete.php?com='.$row['id'].'"><span class="glyphicon glyphicon-remove"></span></a></h6>
+									<p class = "comment">' . $row['comment'] . ' </p>
 
-							</div>
-						';
+								</div>
+							';
+						}
+					}else{
+						while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+							echo '
+								<div class="col-sm-5">
+									<h4 class = "namee">' . $row['name'] . '</h4>
+									<h6 class = "time">' . $row['time'] . '</h6>
+									<p class = "comment">' . $row['comment'] . ' </p>
+
+								</div>
+							';
+						}
 					}
+					
+
+
+
+
 					if(isset($_COOKIE['login'])) 
 					{
 						echo ' 

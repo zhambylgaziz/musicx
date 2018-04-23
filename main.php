@@ -44,7 +44,7 @@
 						echo '<div class="col-sm-6">
 								<h3>' . $row['name'] . '</h3>
 								<p> ' . $row['title'] . ' <a href = "delete.php?item='.$row['sid'].'"><span class="glyphicon glyphicon-remove"></span></a></p>
-								<img src = "images/' . $row['img'] . '" style = "max_width: 400px; height: 400px;">
+								<a href = "item.php?item='.$row['sid'].'" ><img src = "images/' . $row['img'] . '" style = "max_width: 400px; height: 400px;"></a>
 								<audio controls>
 									<source src= "audio/' . $row['audio'] . '" type="audio/mpeg">
 								</audio>
@@ -56,7 +56,7 @@
 						echo '<div class="col-sm-6">
 								<h3>' . $row['name'] . '</h3>
 								<p> ' . $row['title'] . '</p>
-								<img src = "images/' . $row['img'] . '" style = "max_width: 400px; height: 400px;">
+								<a href = "item.php?item='.$row['sid'].'" ><img src = "images/' . $row['img'] . '" style = "max_width: 400px; height: 400px;"></a>
 								<audio controls>
 									<source src= "audio/' . $row['audio'] . '" type="audio/mpeg">
 								</audio>
@@ -96,7 +96,7 @@
 						if(res == "jpg" || res == "jpeg" || res == "png"){
 							reader.onload = function (e) {
 				                $('#img').attr('src', e.target.result);
-				            }
+				            }	
 				            reader.readAsDataURL(input.files[0]);
 						}else{
 							alert("Choose only picture!");

@@ -71,7 +71,6 @@
 						{
 							echo 'Username exists';
 						}
-
 					mysqli_close($con);
 				}
 				
